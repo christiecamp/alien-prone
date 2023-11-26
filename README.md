@@ -16,9 +16,8 @@
 
 [![View Badge](https://img.shields.io/badge/view-darkmode-purple.svg?&logo=Github&logoColor=white)](https://canva.com/) 
 
-coming soon!
 
-### ![table-of-contents](./aurora-lights/branding/toc.png)
+### ![table-of-contents](./abductions/branding/toc.png)
 
   - [OVERVIEW](#overview)
     - [*user story*](#user-story)
