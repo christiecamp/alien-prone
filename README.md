@@ -32,3 +32,38 @@
   - [LICENSE](#license)
   - [LINKS](#links)
   - [CONNECT](#connect)
+
+### ![overview](./abductions/branding/1.png)
+
+`ALIEN PRONE` is a CMS style blog site for abductee's to publish UFO sightings, recent abductions, thoughts & opinions. The app follows the MVC paradigm in its architectural structure, using [Handlebars.js]() as the templating language,[Sequelize](https://www.npmjs.com/package/sequelize) as the ORM, and the [express-session](https://www.npmjs.com/package/express-session) npm package for authentication.
+
+* [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement [Handlebars.js]() for *views*.
+
+* [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect  to `ALIEN PRONE's` **database** for *models*
+
+* [Express.js]() API for *controllers*.
+
+* [dotenv](https://www.npmjs.com/package/dotenv) package to use environment variables to **store sensitive data**, [bcrypt package](https://www.npmjs.com/package/bcrypt) to **hash passwords**, & [express-session](https://www.npmjs.com/package/express-session) and  [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add **authentication**.
+
+#
+>The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie - when an abductee is idle on `ALIEN PRONE` for more than a set time, the cookie will expire and the abductee will be required to log in again to start a new session.
+#
+
+
+
+### ![user-story](./abductions/branding/9.png)
+<!-- <p align="center">
+  <img src="./abductions/branding/user-story.png"/>
+</p> -->
+
+### ![acceptance-criteria](./abductions/branding/10.png)
+<!-- <p align="center">
+  <img src="./abductions/branding/ac.png"/>
+</p> -->
+
+### ![probe-list](./abductions/branding/11.png)
+<!-- <p align="center">
+  <img src="./abductions/branding/probe-list.png"/>
+</p> -->
+
+#
