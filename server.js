@@ -24,10 +24,7 @@ const sess = {
     secret: 'Alien abduction secret',
     //HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser. 
     cookie: {
-      maxAge: 300000, //max age of the session
-      httpOnly: true, 
-      secure: false,
-      sameSite: 'strict',
+      //set cookies last
     },
     resave: false,
     saveUninitialized: true,
