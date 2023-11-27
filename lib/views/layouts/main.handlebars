@@ -1,19 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALIEN PRONE Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/jass.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-    <header></header>
-    <nav></nav>
-    <main></main>
-    <footer></footer>
+<body class="bg-image" style="background-image: url('../../public/assets/background.png'); height: 100vh;background-size: cover; background-color:black;">
+    <nav class="navbar navbar-expand-md navbar-dark shadow-5-strong;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="../../public/assets/blog-logo.png" height="80px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            {{#if loggedIn}}
+            <li class="nav-item">
+              <a class="nav-link" href="/" id="logout">Logout</a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <h1 class="display-2 py-5"><img src="../../public/assets/welcome-header.png" height="150px"></h1>
+      {{{ body }}}
+    </main>
+
+    <footer class ="container">
+      <h6 class="text-center text-light"><img src="https://emojipedia-us.s3.amazonaws.com/source/skype/289/purple-heart_1f49c.png" height="20px"></h6>
+      <div class ="text-center">
+          <a class ="social" href="https://christiecamp.com">
+            <img src="../../public/assets/footer-logo.png" height="150px" alt="website">
+          </a>
+      </div>
+      <div class="text-center">
+          <a class="social" href="https://github.com/christiecamp" target="_blank" title="Github">
+            <img src="../../public/assets/github.png" height="30px" alt="github">
+          </a>
+          <a class="social" href="https://www.linkedin.com/in/christiecamphoto/" target="_blank" title="LinkedIn">
+            <img src="../../public/assets/linkedin.png" height="30px" alt="linkedin">
+          </a><br><br><br>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{!-- public - js logout --}}
+    {{/if}}
 </body>
 
 </html>
