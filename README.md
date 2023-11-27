@@ -67,6 +67,38 @@
 </p> -->
 
 #
+
+### ![installation](./abductions/branding/2.png)
+
+The application is invoked using the following commands:
+
+##### *Clone the repository in your local development enviornment.*
+
+```
+git clone https://github.com/christiecamp/alien-prone.git
+```
+<!-- ##### **Update *.env* with your information**
+
+##### *Navigate to the command line and input:*
+
+```javascript
+npm i :: express, mysql2, dotenv --save, sequelize, -g nodemon --save-dev,
+```
+```javascript
+mysql -u root -p
+```
+```mysql
+SOURCE lib/db/schema.sql;
+quit
+```
+```javascript
+npm run seed
+```
+```javascript
+nodemon server
+``` -->
+
+#
 <p align="center">
 <a href="https://www.christiecamp.com"><img height= '250px' src ="./abductions/branding/taken.png"></a>
 </p>
