@@ -1,19 +1,19 @@
 [
 	{
 		"title": "High-Rise UFO Abductions on the Climb",
-		"body": "Author Budd Hopkins claims that people are routinely abducted by UFOs from high-rise buildings. UFOs reportedly hover near a high rise and abduct individuals through windows.",
+		"content": "Author Budd Hopkins claims that people are routinely abducted by UFOs from high-rise buildings. UFOs reportedly hover near a high rise and abduct individuals through windows.",
 		"name": "Mulder",
         "user_id": 1
 	},
 	{
 		"title": "US Government Published Long-Awaited Report Into UFOs",
-		"body": "The report suggests that the U.S. government appears to be taking UFOs seriously.",
+		"content": "The report suggests that the U.S. government appears to be taking UFOs seriously.",
 		"name": "Scully",
         "user_id": 2
 	},
 	{
 		"title": "We Have Uncovered Some Things: Pentagon - UFO Online Reporting Tool Launches",
-		"body": "The Pentagon has launched an online reporting tool for certain encounters with unidentified anomalous phenomena, formerly known as UFOs, in an expansion of its effort to be more transparent about its exploration of the unknown.",
+		"content": "The Pentagon has launched an online reporting tool for certain encounters with unidentified anomalous phenomena, formerly known as UFOs, in an expansion of its effort to be more transparent about its exploration of the unknown.",
 		"name": "Skinner",
         "user_id": 3
 	}
