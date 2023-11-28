@@ -20,18 +20,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/">home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">Dashboard</a>
+              <a class="nav-link" href="/dashboard">dashboard</a>
             </li>
             {{#if loggedIn}}
             <li class="nav-item">
-              <a class="nav-link" href="/" id="logout">Logout</a>
+              <a class="nav-link" href="/" id="logout">logout</a>
             </li>
             {{else}}
             <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link" href="/login">login</a>
             </li>
             {{/if}}
           </ul>
@@ -52,10 +52,10 @@
           </a>
       </div>
       <div class="text-center">
-          <a class="social" href="https://github.com/christiecamp" target="_blank" title="Github">
+          <a class="social" href="https://github.com/christiecamp" target="_blank" title="github">
             <img src="../../public/assets/github.png" height="30px" alt="github">
           </a>
-          <a class="social" href="https://www.linkedin.com/in/christiecamphoto/" target="_blank" title="LinkedIn">
+          <a class="social" href="https://www.linkedin.com/in/christiecamphoto/" target="_blank" title="linkedIn">
             <img src="../../public/assets/linkedin.png" height="30px" alt="linkedin">
           </a><br><br><br>
       </div>
@@ -63,9 +63,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
-    {{#if loggedIn}}
+    {{#if logged_in}}
     <script src="/js/logout.js"></script>
-    {{!-- public - js logout --}}
     {{/if}}
 </body>
 
