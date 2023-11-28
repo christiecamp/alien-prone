@@ -1,0 +1,24 @@
+<main>
+    <div class="card">
+        <h3 class="card-header">New Post</h3>
+        {{!-- create image --}}
+
+        <form class="card-body" id="new-post-form">
+            <div class="form-floating mb-3">
+                <label for="post-title" class="form-label" ></label>
+                <input type="text" id="post-title" name="post-title" class="form-input w-100" autofocus="true" placeholder="title"/>
+            </div>
+
+            <div class="form-floating mb-3">
+                <label class="form-label" for="content" ></label>
+                <textarea id="content" name="content" class="form-input w-100" aria-label="With textarea" style="height: 300px"
+                autofocus="true" placeholder="content"></textarea>
+            </div>
+
+            <button type="submit" class="w-100 btn btn-lg mb-3 text-light" style="background-color: plum;">create post</button>
+        </form>
+        
+    </div>
+</main>
+
+<script src="/js/add-post.js"></script>
