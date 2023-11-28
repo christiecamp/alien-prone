@@ -1,0 +1,12 @@
+{{#if post.length}}
+<section>
+  <h2>posts</h2>
+  {{!-- add image --}}
+    {{#each post as |post|}}
+    {{!-- partials view --}}
+      {{> dash-detail post}}
+    {{/each}}
+</section>
+{{/if}}
+
+<button type="submit" class="btn"><a class="link text-light" href="/dashboard/new">new post</a></button>
