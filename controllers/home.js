@@ -2,12 +2,25 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+//api endpoints
+
 //all posts
 router.get ('/', async (req, res) => {
     try {
         //join with user data
         const postData = await Post.findAll({
-            include: [User],
+            attributes: ['id', 'title', 'content', 'date'],
+            include:[{
+                model: Comment,
+                attributes: ['id', 'description', 'post_id', 'user_id', 'date'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+            }},
+            {
+                model: User,
+                attributes: ['username']
+            }]
         });
         //serialize data
         const posts = postData.map((post) => post.get({ plain: true }));
@@ -36,7 +49,7 @@ router.get ('/', async (req, res) => {
     } catch(err) {
         res.status(500).json(err);
         console.log(err);
-    }
+    };
 });
 
 
@@ -44,13 +57,15 @@ router.get ('/', async (req, res) => {
 router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            include: [
-				User,
-				{
-					model: Comment,
-					include: [User]
-				},
-			]
+            attributes: ['id', 'content', 'title', 'date'],
+            include: [{
+                model: User,
+                attributes: ['username'],
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }]
         });
         //serialize data
         const post = postData.get({ plain: true });
@@ -129,7 +144,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   //redirect the request to another dashboard if user is already logged in
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/');
     return;
   }
   res.render('login');

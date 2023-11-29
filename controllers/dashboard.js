@@ -3,7 +3,7 @@ const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-//all posts - dashboard
+//all posts
 router.get('/', withAuth, async (req, res) => {
     try {
         //all posts by user id
@@ -16,8 +16,7 @@ router.get('/', withAuth, async (req, res) => {
         //serialize data
         const posts = postData.map((post) => post.get({ plan: true }));
         //render all posts by user id
-        res.status(200).render('all-posts', {
-            layout: 'dashboard',
+        res.status(200).render('dashboard', {
             posts,
             logged_in: req.session.logged_in
         });
@@ -45,7 +44,10 @@ router.get('/', withAuth, async (req, res) => {
         `);   
     } catch (err) {
         //
-        res.status(500).redirect('login');
+        res
+            .status(500)
+            .json(err)
+            .redirect('login');
     }
 });
 
@@ -72,7 +74,6 @@ router.get('/edit/:id', withAuth, async (req, res) => {
             return;
         }
         res.status(200).render('edit-post', {
-            layout: 'dashboard',
             post,
             logged_in: req.session.user_id,
         });
@@ -105,7 +106,6 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 router.get('/new', withAuth, async (req, res) => {
     try {
         res.status(200).render('new-post', {
-            layout: 'dashboard',
             logged_in: req.session.logged_in
         });
         console.log(`
