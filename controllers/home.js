@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// all posts
+//all posts
 router.get ('/', async (req, res) => {
     try {
         //join with user data
@@ -85,15 +85,15 @@ router.get('/post/:id', async (req, res) => {
 //dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
-        const abducteeData = await User.findByPk(req.session.user_id, {
+        const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
-            include: [{ model: Project}],
+            include: [{ model: Post}],
         });
 
-        const abductee = abducteeData.get({ plain: true });
+        const user = userData.get({ plain: true });
 
         res.render('dashboard', {
-            ...abductee,
+            ...user,
             logged_in: true
         });
         console.log(`
@@ -136,29 +136,29 @@ router.get('/login', (req, res) => {
   //will need to move this to dashboard - keeping as placeholder
   console.log(`
   =========================================================
-  ************** WELCOME BACK ${abductee}! ****************
+  **************** WELCOME BACK ABDUCTEE! *****************
   =========================================================
                                           _____________               
-                                       __/_|_|_|_|_|_|_\__               
-                                      /                   \    .           
-                 .       ____________/  ____               \   :            
+                                       __/_|_|_|_|_|_|_.__               
+                                      /                   .    .           
+                 .       ____________/  ____               .   :            
                  :    __/_|_|_|_|_|_(  |    |               )  |           
-                 |   /               \ | () |()  ()  ()  ()/   *          
-                 *  /  ____           \|____|_____________/            
-    .              (  |    |            \_______________/
-    :               \ | () |()  ()  ()    \___________/
-    |                \|____|____________ /   \______/     .
-    *                  \_______________/       \  /       :
-          3         .    \___________/         (__)       |    .
-            3       :       \______/           /  \       *    :
-             3      |         \  /            /    \           |
-              3     *         (__)           /      \          *
-        ,,     3              /  \          /        \
-      w'\v',___n___          /    \        /          \
-      v\`|Y/      /\        /      \      /            \
-      '-Y/-'_____/  \      /        \    /              \
-       '|-'      |  |     /          \  /                \
-________|_|______|__|____/____________\/__________________\__
+                 |   /               . | () |()  ()  ()  ()/   *          
+                 *  /  ____           .|____|_____________/            
+    .              (  |    |            ._______________/
+    :               ', | () |()  ()  ()    .___________/
+    |                '.|____|____________ /   .______/     .
+    *                  ',_______________/       .  /       :
+          3         .    '.___________/         (__)       |    .
+            3       :       '.______/            / .      *    :
+             3      |         '.  /             /   .          |
+              3     *          (__)            /     .          *
+        ,,     3               /  .           /       .  
+      w'..',___n___           /    .         /         .
+      v..|Y/      /.         /      .       /           .
+      '-Y/-'_____/  .       /        .     /             .
+       '|-'      |  |      /          .   /               .
+________|_|______|__|____ /____________._/_________________.__
   `);
 });
 
