@@ -11,14 +11,26 @@ router.get('/', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id,
             },
-            include: [User],
+            attributes: ['id', 'title', 'content', 'created_at'],
+            include: [{
+                model: Comment,
+                attributes: ['id', 'description', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }]
         });
         //serialize data
         const posts = postData.map((post) => post.get({ plan: true }));
         //render all posts by user id
         res.status(200).render('dashboard', {
             posts,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
         });
         console.log(`
         ================================
@@ -44,10 +56,7 @@ router.get('/', withAuth, async (req, res) => {
         `);   
     } catch (err) {
         //
-        res
-            .status(500)
-            .json(err)
-            .redirect('login');
+        res.status(500).json(err);
     }
 });
 
@@ -56,16 +65,19 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            include: [
-                {
-                    model: Comment,
-                    include: [User]
-                },
-                {
+            attributes: ['id', 'title', 'content', 'created_at'],
+            include: [{
+                model: User,
+                attibutes: ['username']
+            },
+            {
+                model: Comment,
+                attributes: ['id', 'description', 'post_id', 'user_id', 'created_at'],
+                include: {
                     model: User,
                     attributes: ['username']
                 },
-            ]
+            }]
         });
         //serialize data
         const post = postData.get({ plain: true });
@@ -75,11 +87,11 @@ router.get('/edit/:id', withAuth, async (req, res) => {
         }
         res.status(200).render('edit-post', {
             post,
-            logged_in: req.session.user_id,
+            logged_in: true
         });
         console.log(`
         ================================
-        ****** viewing post by id ******
+        ******* post was edited! *******
         ================================
            
             .-""""-.        .-""""-.
@@ -96,7 +108,10 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 
         `);
     } catch (err) {
-        res.status(500).json(err);
+        res
+            .status(500)
+            .json(err);
+            //.redirect('login');
         console.log(err);
     }
 });
@@ -106,7 +121,6 @@ router.get('/edit/:id', withAuth, async (req, res) => {
 router.get('/new', withAuth, async (req, res) => {
     try {
         res.status(200).render('new-post', {
-            logged_in: req.session.logged_in
         });
         console.log(`
         ===============================
