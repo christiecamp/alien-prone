@@ -4,11 +4,11 @@ const express = require('express');
 const session = require('express-session');
 //a Handlebars view engine for Express which doesn't suck
 const exphbs = require('express-handlebars');
-const routes = require('./lib/controllers');
+const routes = require('./controllers');
 //custom helpers
-const helpers = require('./lib/utils/helpers');
+const helpers = require('./utils/helpers');
 //sequelize connection
-const sequelize = require('./lib/config/connection');
+const sequelize = require('./config/connection');
 //SQL session store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 

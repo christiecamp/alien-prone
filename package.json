@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "description": "A CMS-style blog site for abductee's to publish UFO sightings and abduction blog posts",
   "main": "server.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node lib/seeds/seed.js",
+    "seed": "node seeds/seed.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
