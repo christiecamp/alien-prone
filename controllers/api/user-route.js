@@ -199,7 +199,6 @@ router.post('/logout', (req, res) => {
             res.status(204).end();
         });
         console.log(`
-
                      probe you later
                         _________
                        /___   ___\

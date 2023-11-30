@@ -179,7 +179,7 @@ ________|_|______|__|____ /____________._/_________________.__
 
 
 //signup
-router.get('/signup', (req, res) => {
+router.get('/signup', async (req, res) => {
 	if (req.session.logged_in) {
 		res.redirect('/dashboard');
 		return;
