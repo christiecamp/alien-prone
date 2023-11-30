@@ -72,7 +72,8 @@ router.post('/', withAuth, async (req,res) => {
     try {
         //new comment
         const comment = await Comment.create({
-            ...req.body,
+            description: req.body.description,
+            post_id: req.body.post_id,
             user_id: req.session.user_id,
         });
         res.status(200).json(comment);
@@ -88,6 +89,38 @@ router.post('/', withAuth, async (req,res) => {
                 (___/__________\___)    .
        .           /  \_______/  \                .
                 *                     .
+        `);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
+//update comment
+router.put('/:id', withAuth, async (req,res) => {
+    try {
+        //update comment
+        const comment = await Comment.update({
+            description: req.body.description,
+            id: req.params.id,
+        })
+        if(!comment) {
+            res.status(404).json({ message: `id not found` });
+            return;
+        }
+        res.status(200).json(comment);
+        console.log(`
+        ===============================
+        ***** comment was updated! ****
+        ===============================       
+ *          /\\              *               .
+            \ \\  \__/ \__/ 
+             \ \\ (oo) (oo)         .
+       .      \_\\/~~\_/~~\_
+             _.-~===========~-._           *
+            (___/__________\___)    .
+   .           /  \_______/  \                .
+            *                     .
         `);
     } catch (err) {
         res.status(500).json(err);

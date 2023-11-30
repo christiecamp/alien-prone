@@ -3,7 +3,7 @@ async function commentFormHandler(event) {
     event.preventDefault();
 
     //collect values
-    const description = document.querySelector('input[name="description"]').value.trim();
+    const description = document.querySelector('input[name="description"]').value;
 
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1
