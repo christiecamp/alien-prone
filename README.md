@@ -3,7 +3,7 @@
 </p>
 
 [![License: mit](https://img.shields.io/badge/license-mit-blue?)](https://opensource.org/licenses/MIT) 
-[![Node.js Badge](https://img.shields.io/badge/node-darkblue?logo=nodedotjs&logoColor=fff&style=flat)](https://nodejs.org/en)
+[![Node.js Badge](https://img.shields.io/badge/node-darkblue?logo=nodedotjs&logoColor=white&style=flat)](https://nodejs.org/en)
 [![MySql Badge](https://img.shields.io/badge/mysql-neon.svg?&logo=Mysql&logoColor=white)](https://www.mysql.com)
 [![Express.js Badge](https://img.shields.io/badge/express-skyblue.svg?&logo=Express&logoColor=white)](https://expressjs.com/)
 [![Sequelize Badge](https://img.shields.io/badge/sequelize-cyan.svg?&logo=Sequelize&logoColor=white)](https://canva.com)
@@ -52,19 +52,19 @@
 
 
 ### ![user-story](./abductions/branding/9.png)
-<!-- <p align="center">
+<p align="center">
   <img src="./abductions/branding/user-story.png"/>
-</p> -->
+</p>
 
 ### ![acceptance-criteria](./abductions/branding/10.png)
-<!-- <p align="center">
+<p align="center">
   <img src="./abductions/branding/ac.png"/>
-</p> -->
+</p>
 
 ### ![probe-list](./abductions/branding/11.png)
-<!-- <p align="center">
+<p align="center">
   <img src="./abductions/branding/probe-list.png"/>
-</p> -->
+</p>
 
 #
 
