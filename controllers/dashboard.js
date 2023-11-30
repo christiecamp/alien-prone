@@ -11,10 +11,10 @@ router.get('/', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id,
             },
-            attributes: ['id', 'title', 'content', 'created_at'],
+            attributes: ['id', 'title', 'content'],
             include: [{
                 model: Comment,
-                attributes: ['id', 'description', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'description', 'post_id', 'user_id'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -64,15 +64,15 @@ router.get('/', withAuth, async (req, res) => {
 //find user's post by id to edit
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.findByPk(req.params.id, {
-            attributes: ['id', 'title', 'content', 'created_at'],
+        const postData = await Post.findOne(req.params.id, {
+            attributes: ['id', 'title', 'content'],
             include: [{
                 model: User,
                 attibutes: ['username']
             },
             {
                 model: Comment,
-                attributes: ['id', 'description', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'description', 'post_id', 'user_id'],
                 include: {
                     model: User,
                     attributes: ['username']

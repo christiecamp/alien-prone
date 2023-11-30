@@ -1,8 +1,8 @@
-{{#if post.length}}
+{{#if posts.length}}
 <section>
   <h2>posts</h2>
   {{!-- add image --}}
-    {{#each post as |post|}}
+    {{#each posts as |post|}}
     {{!-- partials view --}}
       {{> dash-detail post}}
     {{/each}}

@@ -4,7 +4,7 @@ async function editFormHandler(event) {
 
    //collect values 
     const title = document
-        .querySelector('input[name="post-title"]')
+        .querySelector('input[name="title"]')
         .value.trim();
     const content = document
         .querySelector('textarea[name="content"]')

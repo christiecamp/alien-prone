@@ -6,10 +6,10 @@ const withAuth = require('../../utils/auth');
 //all comments
 router.get('/', async (req,res) => {
     try {
-        const comment = await Comment.findAll({
-            attributes: ['id', 'description', 'created_at'],
+        const comments = await Comment.findAll({
+            attributes: ['id', 'description', 'post_id'],
         });
-        res.status(200).json(comment);
+        res.status(200).json(comments);
         console.log(`
         ============================
         *** viewing all comments! **
@@ -34,6 +34,39 @@ router.get('/', async (req,res) => {
 });
 
 
+//comment by id
+router.get('/:id', async (req,res) => {
+    try {
+        const comment = await Comment.findOne({
+            where: {
+                id: req.params.id,
+            }
+        });
+        if(!comment) {
+            res.status(404).json({ message: `id not found` });
+            return;
+        }
+        res.status(200).json(comment);
+        console.log(`
+        ===============================
+        **** viewing comment by id! ***
+        ===============================                          
+ *          /\\              *               .
+            \ \\  \__/ \__/ 
+             \ \\ (oo) (oo)         .
+       .      \_\\/~~\_/~~\_
+             _.-~===========~-._           *
+            (___/__________\___)    .
+   .           /  \_______/  \                .
+            *                     .
+    `);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
+
 //new comment
 router.post('/', withAuth, async (req,res) => {
     try {
@@ -46,7 +79,7 @@ router.post('/', withAuth, async (req,res) => {
         console.log(`
             ===============================
             ***** comment was created! ****
-            ===============================                          
+            ===============================       
      *          /\\              *               .
                 \ \\  \__/ \__/ 
                  \ \\ (oo) (oo)         .

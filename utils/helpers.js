@@ -1,9 +1,8 @@
 module.exports = {
-    format_date: (date) => {
-        //date format mm/dd/yyyy
-        return date.toLocalDateString();
-    },
     format_time: (date) => {
         return date.toLocalTimeString();
+    },
+    format_date: (date) => {
+        return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${new Date(date).getFullYear()}`;
     },
 };

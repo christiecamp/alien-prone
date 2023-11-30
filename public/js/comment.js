@@ -1,12 +1,9 @@
 //add comment
 async function commentFormHandler(event) {
     event.preventDefault();
-    commentFormHandler();
 
     //collect values
-    const description = document
-        .querySelector('input[name="comment-description"]')
-        .value.trim();
+    const description = document.querySelector('input[name="description"]').value.trim();
 
     const post_id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1

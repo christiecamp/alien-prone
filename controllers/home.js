@@ -25,6 +25,7 @@ router.get ('/', async (req, res) => {
         //serialize data
         const posts = postData.map((post) => post.get({ plain: true }));
         //render all posts
+        // res.status(200).json(posts);
         res.render('homepage', {
             posts,
             logged_in: req.session.logged_in,
@@ -90,48 +91,6 @@ router.get('/post/:id', async (req, res) => {
               |  |            |  |
               |  |            |  |
 
-        `);
-    } catch (err) {
-        res.status(500).json(err);
-        console.log(err);
-    }
-});
-
-//dashboard
-router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Post }],
-        });
-
-        const user = userData.get({ plain: true });
-
-        res.render('dashboard', {
-            ...user,
-            logged_in: true
-        });
-        console.log(`
-        ================================
-        ** viewing abductee dashboard **
-        ================================  
-                     _____
-                  ,-"     "-.
-                 / o       o \
-                /   \     /   \
-               /     )-"-(     \
-              /     ( 6 6 )     \
-             /       \ " /       \
-            /         )=(         \
-           /   o   .--"-"--.   o   \
-          /    I  /  -   -  \  I    \
-      .--(    (_}y/\       /\y{_)    )--.
-     (    ".___l\/__\_____/__\/l___,"    )
-      \                                 /
-       "-._      o O o O o O o      _,-"
-           '--Y--.___________.--Y--'
-              |==.___________.==|
-              '==.___________.==' 
         `);
     } catch (err) {
         res.status(500).json(err);
