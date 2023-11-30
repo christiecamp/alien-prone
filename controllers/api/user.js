@@ -1,26 +1,102 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post, Comment } = require('../../models');
+
+
+//all users
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.findAll({
+            attributes: { exclude: ['password'] },
+        });
+        res.status(200).json(users);
+        console.log(`
+        ===============================
+        ****** viewing all users! *****
+        ===============================                          
+ *          /\\              *               .
+            \ \\  \__/ \__/ 
+             \ \\ (oo) (oo)         .
+       .      \_\\/~~\_/~~\_
+             _.-~===========~-._           *
+            (___/__________\___)    .
+   .           /  \_______/  \                .
+            *                     .
+        `);
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
+//user by id
+router.get('/:id', async (req,res) => {
+    try {
+        const user = await User.findByPk({
+            where: {
+                id: req.params.id
+            },
+            attributes: { exclude: ['password'] },
+            include: [{
+                model: Post,
+                attributes: ['id', 'title', 'content', 'created_at']
+            },
+            {
+               model: Comment,
+               attributes: ['id', 'description', 'created_at'],
+               include: {
+                    model: Post,
+                    attributes: ['title']
+               }      
+            },
+            {
+                model: Post,
+                attributes: ['title'],
+            }]
+        });
+        if (!user) {
+            res.status(404).json({ message: 'id not found' });
+            return;
+        }
+        res.status(200).json(user);
+        console.log(`
+        ===============================
+        ***** viewing user by id! *****
+        ===============================                          
+ *          /\\              *               .
+            \ \\  \__/ \__/ 
+             \ \\ (oo) (oo)         .
+       .      \_\\/~~\_/~~\_
+             _.-~===========~-._           *
+            (___/__________\___)    .
+   .           /  \_______/  \                .
+            *                     .
+        `);     
+    } catch (err) {
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
 
 
 //signup
 router.post('/', async (req, res) => {
     try {
         //new user
-        const newAbductee = await User.create({
+        const user = await User.create({
             username: req.body.username,
             password: req.body.password,
         });
 
         req.session.save(() => {
-            req.session.user_id = newAbductee.id,
-            req.session.username = newAbductee.username,
-            req.session.logged_in = true,
+            req.session.user_id = user.id;
+            req.session.username = user.username;
+            req.session.logged_in = true;
 
-            res.status(200).json(userData);
+            res.status(200).json(user);
         });
         console.log(`
         =========================================================
-        ***************** WELCOME to ALIEN PRONE! ***************
+        **************** WELCOME to ALIEN PRONE! ****************
         =========================================================
                                                 _____________               
                                              __/_|_|_|_|_|_|_\__               
@@ -55,36 +131,38 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req,res) => {
     try {
         //current user login
-        const abductee = await User.findOne({ where: { username: req.body.username } });
-
-        if (!abductee) {
+        const user = await User.findOne({ 
+            where: { 
+                username: req.body.username
+            }
+        });
+        //validate login
+        if (!user) {
             res
                 .status(400)
                 .json({ message: 'incorrect username or password - please try again' });
             return;
         }
-
-        const password = await abductee.checkPassword(req.body.password);
-
+        const password = await user.checkPassword(req.body.password);
+        //validate password
         if(!password) {
             res
                 .status(400)
                 .json({ message: 'incorrect username or password - please try again' });
             return;         
         }
-
         req.session.save(() => {
-            req.session.user_id = abductee.id;
-            req.session.username = abductee.username;
+            req.session.user_id = user.id;
+            req.session.username = user.username;
             req.session.logged_in = true;
 
             res
                 .status(200)
-                .json({ abductee, message: `you are now logged in!` });
+                .json({ user: user, message: `you are now logged in!` });
         });
         console.log(`
         =========================================================
-        ************** WELCOME BACK ${abductee.username}! ****************
+        ************ WELCOME BACK TO ANOTHER PROBE! *************
         =========================================================
                                                 _____________               
                                              __/_|_|_|_|_|_|_\__               

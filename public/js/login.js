@@ -2,12 +2,8 @@
 async function loginFormHandler(event) {
     event.preventDefault();
     //collect values
-    const username = document
-        .querySelectory('#username-login')
-        .value.trim();
-    const password = document
-        .querySelectory('#password-login')
-        .value.trim();
+    const username = document.querySelector('#username-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
     
     //POST request to api endpoint
     if (username && password) {
@@ -15,7 +11,7 @@ async function loginFormHandler(event) {
             method: "POST",
             body: JSON.stringify({
                 username,
-                password,
+                password
             }),
             headers: { 'Content-Type': 'application/json' },
         });
@@ -29,5 +25,5 @@ async function loginFormHandler(event) {
 };
 
 document
-    .querySelectory('#login-form')
+    .querySelector('#login-form')
     .addEventListener('submit', loginFormHandler);

@@ -23,9 +23,7 @@ const hbs = exphbs.create({ helpers });
 const sess = {
     secret: 'Alien abduction secret',
     //HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser. 
-    cookie: {
-      //set cookies last
-    },
+    cookie: {},
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({

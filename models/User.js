@@ -16,13 +16,13 @@ User.init(
             primaryKey: true,
             autoIncrement: true
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1,15],
-            }
-        },
+        // name: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     validate: {
+        //         len: [1,15],
+        //     }
+        // },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -42,22 +42,21 @@ User.init(
     {
         //instance hook - (also known as lifecycle events) functions which are called before and after calls in sequelize are executed; in this instance it will emit whenever a single object is edited
         hooks: {
-            beforeCreate: async (newAbductee) => {//new user output
-                newAbductee.password = await bcrypt.hash(newAbductee.password, 10);
-                return newAbductee;
+            beforeCreate: async (userData) => {//new user output
+                userData.password = await bcrypt.hash(userData.password, 10);
+                return userData;
             },
-            beforeUpdate: async (updatedAbductee) => {//updated user output
-                updatedAbductee.password = await bcrypt.hash(updatedAbductee.password, 10);
-                return updatedAbductee;
+            beforeUpdate: async (updatedUser) => {//updated user output
+                updatedUser.password = await bcrypt.hash(updatedUser.password, 10);
+                return updatedUser;
             },
         },
-  
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user',
-  }
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'user',
+    }
 );
 
 module.exports = User;

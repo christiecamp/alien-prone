@@ -6,18 +6,13 @@ const withAuth = require('../../utils/auth');
 //all comments
 router.get('/', async (req,res) => {
     try {
-        const commentData = await Comment.findAll({
-            include: [User],
+        const comment = await Comment.findAll({
+            attributes: ['id', 'description', 'created_at'],
         });
-        //serialize data
-        const comments = commentData.map((comment) => comment.get({ plain: true }));
-        res.status(200).render('homepage', {
-            comments,
-            logged_in: req.session.loggin_in,
-        });
+        res.status(200).json(comment);
         console.log(`
         ============================
-        *** viewing all comments ***
+        *** viewing all comments! **
         ============================
                     o   o
                      )-(
