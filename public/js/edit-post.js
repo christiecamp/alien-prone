@@ -3,12 +3,8 @@ async function editFormHandler(event) {
     event.preventDefault();
 
    //collect values 
-    const title = document
-        .querySelector('input[name="title"]')
-        .value.trim();
-    const content = document
-        .querySelector('textarea[name="content"]')
-        .value.trim();
+    const title = document.querySelector('input[name="title"]').value;
+    const content = document.querySelector('textarea[name="content"]').value;
 
     const id = window.location.toString().split('/')[
         window.location.toString().split('/').length - 1

@@ -64,7 +64,7 @@ router.get('/', withAuth, async (req, res) => {
 //find user's post by id to edit
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-        const postData = await Post.findOne(req.params.id, {
+        const postData = await Post.findByPk(req.params.id, {
             attributes: ['id', 'title', 'content'],
             include: [{
                 model: User,
