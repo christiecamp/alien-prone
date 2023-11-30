@@ -77,7 +77,7 @@ The application is invoked using the following commands:
 ```
 git clone https://github.com/christiecamp/alien-prone.git
 ```
-<!-- ##### **Update *.env* with your information**
+##### **Create a *.env* with your information**
 
 ##### *Navigate to the command line and input:*
 
@@ -88,7 +88,7 @@ npm i :: express, mysql2, dotenv --save, sequelize, -g nodemon --save-dev,
 mysql -u root -p
 ```
 ```mysql
-SOURCE lib/db/schema.sql;
+SOURCE db/schema.sql;
 quit
 ```
 ```javascript
@@ -96,7 +96,159 @@ npm run seed
 ```
 ```javascript
 nodemon server
+```
+
+#
+
+### ![usage](./abductions/branding/3.png)
+
+**INSTRUCTIONS:**
+
+1. Open the Integrated Terminal and follow the [installation](#installation) guidelines
+
+2. Interact with `ALIEN PRONE's` back end with [Insomnia](https://www.npmjs.com/package/inquirer/v/8.2.4) by testing the below:
+      * GET all users, posts, comments
+      * GET user, post, comment by id
+      * CREATE user, post, comment
+      * UPDATE post
+      * DELETE post, comment
+
+      ##### view [demo videos](#demo) and [testing](#testing) 
+
+
+### ![screenshot](./abductions/branding/12.png)
+        
+        
+##### *Screenshot demonstrates testing with Insomnia*
+
+<p align="center">
+<img src="./aurora-lights/demos/ss.png"/>
+</p>
+
+
+### ![demo](./abductions/branding/13.png)
+
+##### **users**
+
+<!-- <p align="left">
+<img src="./aurora-lights/demos/categories.gif"/>
+</p> -->
+
+##### **posts**
+
+<!-- <p align="left">
+<img src="./aurora-lights/demos/products.gif"/>
+</p> -->
+
+
+##### **comments**
+
+<!-- <p align="left">
+<img src="./aurora-lights/demos/tags.gif"/>
+</p> -->
+
+#
+
+### ![testing](./abductions/branding/8.png)
+
+**TESTING WITH INSOMNIA:**
+
+There are different tools available that can test reading/writing operations in a web browser - in this application we use [Insomnia](https://insomnia.rest/), a *REST client* that makes it easy to send **HTTP requests** to an API and view response details. 
+
+1. After installing Insomnia, open a new document.
+
+2. Interact with `ALIEN PRONE's` back end by testing the below commands:
+
+##### **GET** all users, posts, comments
+```json
+http://localhost:3013/api/user
+```
+```json
+http://localhost:3013/api/post
+```
+```json
+http://localhost:3013/api/comment
+```
+
+
+##### **GET** category by *id*
+```json
+http://localhost:3013/api/user/1
+```
+
+##### **CREATE** post
+<!-- ```json
+http://localhost:3013/api/post/new
 ``` -->
+<!-- ```json
+{
+	"product_name": "",
+	"price": 1.00,
+	"stock": 1,
+	"tag_id": [1, 2, 3]
+}
+``` -->
+
+##### **UPDATE** post
+<!-- ```json
+http://localhost:3013/api/post/
+```
+```json
+{
+  "tag_name": ""
+}
+``` -->
+##### **DELETE** post
+<!-- ```json
+http://localhost:3013/api/categories/8
+``` -->
+
+#
+
+### ![sources](./abductions/branding/4.png)
+
+Here's a list of technologies used:
+
+1. [Node.js](https://nodejs.org/en) - is an open-source, cross-platform JavaScript runtime environment.
+
+2. [Express.js]((https://expressjs.com)) - a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+
+3. [MySQL2](https://www.npmjs.com/package/mysql2) - MySQL is a relational database management system based on SQL – Structured Query Language.
+
+4. [Dotenv](https://www.npmjs.com/package/dotenv) - a zero-dependency module that loads environment variables from a .env file into `process.env`.
+
+5. [Sequelize](https://sequelize.org/) - a Node.js based `Object Relational Mapper` that makes it easy to work with **MySQL databases**. An *Object Relational Mapper* performs functions like handling database records by representing the data as objects.
+
+6. [Nodemon](https://www.npmjs.com/package/nodemon) - a Node.js tool that helps develop applications by automatically restarting the node application when file changes in the directory are detected.
+
+7. [Insomnia](https://insomnia.rest/) - an open source desktop application that assists in designing, debugging, and testing APIs (specifically in this instance, HTTP-based RESTful APIs).
+
+
+### ![license](./abductions/branding/5.png)
+
+##### [mit license](./LICENSE)
+
+
+### ![links](./abductions/branding/6.png)
+
+##### [*github repo*](https://github.com/christiecamp/alien-prone)
+
+##### **video demos**:
+  * ##### [*full walkthrough*]()
+
+  * ##### [*user*]()
+
+  * ##### [*post*]() 
+
+  * ##### [*comment*]()
+
+### ![connect](./abductions/branding/7.png)
+
+[![Github Badge](https://img.shields.io/badge/christiecamp-purple.svg?&logo=Github&logoColor=white)](https://github.com/christiecamp/bear-taker)
+
+<a href="mailto:christiecamphoto@gmail.com">
+<img src="https://img.shields.io/badge/gmail-lightblue.svg?&logo=Gmail&logoColor=white" />
+</a>
 
 #
 <p align="center">
