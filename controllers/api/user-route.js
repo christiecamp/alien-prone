@@ -31,18 +31,18 @@ router.get('/', async (req, res) => {
 //user by id
 router.get('/:id', async (req,res) => {
     try {
-        const user = await User.findByPk({
+        const user = await User.findOne({
+            attributes: { exclude: ['password'] },
             where: {
                 id: req.params.id
             },
-            attributes: { exclude: ['password'] },
             include: [{
                 model: Post,
-                attributes: ['id', 'title', 'content', 'created_at']
+                attributes: ['id', 'title', 'content']
             },
             {
                model: Comment,
-               attributes: ['id', 'description', 'created_at'],
+               attributes: ['id', 'description'],
                include: {
                     model: Post,
                     attributes: ['title']
