@@ -233,6 +233,8 @@ Here's a list of technologies used:
 
 ##### [*github repo*](https://github.com/christiecamp/alien-prone)
 
+##### [*deployed app*](https://alien-prone-f88dde7c7c2c.herokuapp.com/)
+
 ##### **video demos**:
   * ##### [*full walkthrough*]()
 
