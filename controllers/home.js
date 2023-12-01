@@ -9,10 +9,10 @@ router.get ('/', async (req, res) => {
     try {
         //join with user data
         const postData = await Post.findAll({
-            attributes: ['id', 'title', 'content', 'date'],
+            attributes: ['id', 'title', 'content'],
             include:[{
                 model: Comment,
-                attributes: ['id', 'description', 'post_id', 'user_id', 'date'],
+                attributes: ['id', 'description', 'post_id', 'user_id'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -58,7 +58,7 @@ router.get ('/', async (req, res) => {
 router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['id', 'content', 'title', 'date'],
+            attributes: ['id', 'title', 'content'],
             include: [{
                 model: Comment,
                 attributes: ['id', 'description', 'post_id', 'user_id'],
