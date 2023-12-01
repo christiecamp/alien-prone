@@ -7,7 +7,7 @@ router.get('/', withAuth, async (req, res) => {
     try {
         //all posts by user id
         const posts = await Post.findAll({
-            attributes: ['id', 'title', 'content'],
+            attributes: ['id', 'title', 'content', 'date'],
             // order: [['created_at', 'DESC']],
             include: [{
                 model: User,
@@ -15,7 +15,7 @@ router.get('/', withAuth, async (req, res) => {
             },
             {
                 model: Comment,
-                attributes: ['id', 'description', 'post_id', 'user_id'],
+                attributes: ['id', 'description', 'post_id', 'user_id', 'date'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -56,14 +56,14 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/:id', async (req,res) => {
     try {
     const post = await Post.findByPk(req.params.id, {
-        attributes: ['id', 'title', 'content'],
+        attributes: ['id', 'title', 'content', 'date'],
         include: [{
             model: User,
             attribues: ['username']
         },
         {
             model: Comment,
-            attributes: ['id', 'description', 'post_id', 'user_id'],
+            attributes: ['id', 'description', 'post_id', 'user_id', 'date'],
             include: {
                 model: User,
                 attributes: ['username']

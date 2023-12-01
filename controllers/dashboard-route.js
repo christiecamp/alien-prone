@@ -11,10 +11,10 @@ router.get('/', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id,
             },
-            attributes: ['id', 'title', 'content'],
+            attributes: ['id', 'title', 'content', 'date'],
             include: [{
                 model: Comment,
-                attributes: ['id', 'description', 'post_id', 'user_id'],
+                attributes: ['id', 'description', 'post_id', 'user_id', 'date'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -68,14 +68,14 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-            attributes: ['id', 'title', 'content'],
+            attributes: ['id', 'title', 'content', 'date'],
             include: [{
                 model: User,
                 attibutes: ['username']
             },
             {
                 model: Comment,
-                attributes: ['id', 'description', 'post_id', 'user_id'],
+                attributes: ['id', 'description', 'post_id', 'user_id', 'date'],
                 include: {
                     model: User,
                     attributes: ['username']

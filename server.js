@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 //custom helpers
 const helpers = require('./utils/helpers');
+const { format_time, format_date } = helpers;
 //sequelize connection
 const sequelize = require('./config/connection');
 //SQL session store
@@ -16,7 +17,12 @@ const probe = express();
 const PORT = process.env.PORT || 3013;
 
 //handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({ 
+  helpers: {
+    format_time,
+    format_date,
+  }
+});
 
 //session object
 //session - a mechanism for maintaining state between requests in a stateless web environment; stores data about a user’s interaction with the application, such as their preferences, shopping cart items, or authenticated status; this information is stored on the server, and a unique session identifier is used to associate the user with their data.
