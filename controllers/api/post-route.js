@@ -55,7 +55,7 @@ router.get('/', withAuth, async (req, res) => {
 //get by id
 router.get('/:id', async (req,res) => {
     try {
-    const post = await Post.findbyPk(req.params.id, {
+    const post = await Post.findByPk(req.params.id, {
         attributes: ['id', 'title', 'content'],
         include: [{
             model: User,
