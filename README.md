@@ -11,7 +11,7 @@
 [![Dotenv Badge](https://img.shields.io/badge/dotenv-orchid.svg?&logo=Dotenv&logoColor=white)](https://canva.com)
 [![Nodemon Badge](https://img.shields.io/badge/nodemon-plum.svg?&logo=Nodemon&logoColor=white)](https://www.npmjs.com/package/nodemon)
 [![Insomnia Badge](https://img.shields.io/badge/insomnia-orange.svg?&logo=Insomnia&logoColor=white)](https://canva.com/) 
-[![Insomnia Badge](https://img.shields.io/badge/heroku-crimson.svg?&logo=Insomnia&logoColor=white)](https://canva.com/) 
+[![Heroku Badge](https://img.shields.io/badge/heroku-crimson.svg?&logo=Insomnia&logoColor=white)](https://heroku.com) 
 [![Canva Badge](https://img.shields.io/badge/canva-hotpink.svg?&logo=Canva&logoColor=white)](https://canva.com/)
 
 [![View Badge](https://img.shields.io/badge/view-darkmode-purple.svg?&logo=Github&logoColor=white)](https://canva.com/) 
@@ -82,7 +82,7 @@ git clone https://github.com/christiecamp/alien-prone.git
 ##### *Navigate to the command line and input:*
 
 ```javascript
-npm i :: express, mysql2, dotenv --save, sequelize, -g nodemon --save-dev,
+npm i :: express, mysql2, dotenv --save, sequelize, nodemon --save-dev, handlebars, express-session, express-handlebars, bcypt, connect-session-sequelize
 ```
 ```javascript
 mysql -u root -p
@@ -110,19 +110,23 @@ nodemon server
       * GET all users, posts, comments
       * GET user, post, comment by id
       * CREATE user, post, comment
-      * UPDATE post
+      * UPDATE user, post, comment
       * DELETE post, comment
 
       ##### view [demo videos](#demo) and [testing](#testing) 
-
+3. Open the [application](https://alien-prone-f88dde7c7c2c.herokuapp.com/) deployed on [Heroku](https://heroku.com/home)
+4. Signup by creating a **username/password**
+5. *Create*, *update*, and *delete* probe posts through your dashboard
+6. *View* all probe posts via the homepage
+7. Interact with each probe post by leaving a **comment** to empathize with the distressed.
+8. *Logout* to leave the application
 
 ### ![screenshot](./abductions/branding/12.png)
-        
-        
-##### *Screenshot demonstrates testing with Insomnia*
+             
+##### *screenshot demonstrates `ALIEN PRONE's` back end, testing all routes with **Insomnia**, and the functional application deployed on **Heroku***
 
 <p align="center">
-<img src="./aurora-lights/demos/ss.png"/>
+<img src="./abductions/demo/ss.png"/>
 </p>
 
 
@@ -177,31 +181,30 @@ http://localhost:3013/api/user/1
 ```
 
 ##### **CREATE** post
-<!-- ```json
-http://localhost:3013/api/post/new
-``` -->
-<!-- ```json
-{
-	"product_name": "",
-	"price": 1.00,
-	"stock": 1,
-	"tag_id": [1, 2, 3]
-}
-``` -->
-
-##### **UPDATE** post
-<!-- ```json
+```json
 http://localhost:3013/api/post/
 ```
 ```json
 {
-  "tag_name": ""
+	"title": "",
+	"content": ""
 }
-``` -->
+```
+
+##### **UPDATE** post
+```json
+http://localhost:3013/api/post/1
+```
+```json
+{
+  "title": "",
+  "content": ""
+}
+```
 ##### **DELETE** post
-<!-- ```json
-http://localhost:3013/api/categories/8
-``` -->
+```json
+http://localhost:3013/api/post/
+```
 
 #
 
@@ -213,15 +216,27 @@ Here's a list of technologies used:
 
 2. [Express.js]((https://expressjs.com)) - a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
-3. [MySQL2](https://www.npmjs.com/package/mysql2) - MySQL is a relational database management system based on SQL – Structured Query Language.
+3. [Handlebars.js](https://handlebarsjs.com/) - a JavaScript templating library used in web development to create dynamic web pages and generate HTML content based on data.
 
-4. [Dotenv](https://www.npmjs.com/package/dotenv) - a zero-dependency module that loads environment variables from a .env file into `process.env`.
+4. [MySQL2](https://www.npmjs.com/package/mysql2) - MySQL is a relational database management system based on SQL – Structured Query Language.
 
 5. [Sequelize](https://sequelize.org/) - a Node.js based `Object Relational Mapper` that makes it easy to work with **MySQL databases**. An *Object Relational Mapper* performs functions like handling database records by representing the data as objects.
 
-6. [Nodemon](https://www.npmjs.com/package/nodemon) - a Node.js tool that helps develop applications by automatically restarting the node application when file changes in the directory are detected.
+6. [express-handlebars](https://www.npmjs.com/package/express-handlebars) - a Handlebars view engine for Express which doesn't suck.
 
-7. [Insomnia](https://insomnia.rest/) - an open source desktop application that assists in designing, debugging, and testing APIs (specifically in this instance, HTTP-based RESTful APIs).
+7. [express-session](https://www.npmjs.com/package/express-session) - a Node.js module that offers simple session middleware for Express.
+
+8. [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) - a SQL session store using Sequelize.js.
+
+9. [Bcyrpt](https://www.npmjs.com/package/bcrypt) - a Node.js library to help hash passwords.
+
+10. [Dotenv](https://www.npmjs.com/package/dotenv) - a zero-dependency module that loads environment variables from a .env file into `process.env`.
+
+11. [Nodemon](https://www.npmjs.com/package/nodemon) - a Node.js tool that helps develop applications by automatically restarting the node application when file changes in the directory are detected.
+
+12. [Insomnia](https://insomnia.rest/) - an open source desktop application that assists in designing, debugging, and testing APIs (specifically in this instance, HTTP-based RESTful APIs).
+
+13. [Heroku](https://heroku.com) - used to deploy, manage, and scale the application.
 
 
 ### ![license](./abductions/branding/5.png)
@@ -234,15 +249,6 @@ Here's a list of technologies used:
 ##### [*github repo*](https://github.com/christiecamp/alien-prone)
 
 ##### [*deployed app*](https://alien-prone-f88dde7c7c2c.herokuapp.com/)
-
-##### **video demos**:
-  * ##### [*full walkthrough*]()
-
-  * ##### [*user*]()
-
-  * ##### [*post*]() 
-
-  * ##### [*comment*]()
 
 ### ![connect](./abductions/branding/7.png)
 
