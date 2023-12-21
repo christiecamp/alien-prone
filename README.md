@@ -14,7 +14,7 @@
 [![Heroku Badge](https://img.shields.io/badge/heroku-crimson.svg?&logo=Insomnia&logoColor=white)](https://heroku.com) 
 [![Canva Badge](https://img.shields.io/badge/canva-hotpink.svg?&logo=Canva&logoColor=white)](https://canva.com/)
 
-[![View Badge](https://img.shields.io/badge/view-darkmode-purple.svg?&logo=Github&logoColor=white)](https://canva.com/) 
+![View Badge](https://img.shields.io/badge/view-darkmode-purple.svg?&logo=Github&logoColor=white)
 
 
 ### ![table-of-contents](./abductions/branding/toc.png)
