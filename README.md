@@ -74,7 +74,7 @@ The application is invoked using the following commands:
 
 ##### *Clone the repository in your local development enviornment.*
 
-```
+```javascript
 git clone https://github.com/christiecamp/alien-prone.git
 ```
 ##### **Create a *.env* with your information**
