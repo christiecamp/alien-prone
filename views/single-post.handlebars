@@ -11,7 +11,10 @@
 </div>
 {{/if}}
 
+
+{{#if logged_in}}
 {{> comment post.comments}}
+{{/if}}
 
 {{#if logged_in}}
 <script src="/js/comment.js"></script>
